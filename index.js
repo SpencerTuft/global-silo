@@ -11,7 +11,7 @@ const isStr = (val) => typeof val === 'string';
  * Initializes multiple variables by calling the set method for each array element.
  * @param options is an array of arrays, each with two strings, e.g. [[key, value], [key2, value2]].
  */
-const initialize = (options) => {
+const init = (options) => {
   if (Object.keys(global_store).length !== 0) throw new Error('The silo already has been initialized');
   if (options && !Array.isArray(options)) throw new Error('The parameter must be an array');
   options.forEach((option, index) => {
@@ -108,11 +108,11 @@ const move = (src, dest) => {
 };
 
 module.exports = {
-  init: initialize,
+  init: init,
   all: all,
   get: get,
   set: set,
-  create: create,
+  add: create,
   rm: remove,
   cp: copy,
   mv: move

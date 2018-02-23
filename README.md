@@ -1,2 +1,2 @@
 # silo
-Creates single location for project-wide variables.
+Creates a single location for server-wide variables.

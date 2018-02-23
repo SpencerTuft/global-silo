@@ -1,7 +1,7 @@
 {
-  "name": "silo",
+  "name": "global-silo",
   "version": "0.0.0",
-  "description": "Creates single location for project-wide variables.",
+  "description": "Creates a single location for server-wide variables.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,4 +1,4 @@
-# silo
+# global-silo
 Creates a single location for server-wide variables.
 
 #### Accessing variables
@@ -21,16 +21,15 @@ mv - Move the value from one property to another
 In a server.js file:
 ```$xslt
 const express = require('express');
-const silo = require('silo');
+const silo = require('global-silo');
 const getBucket = require('./get_s3_bucket');
 
 const app = express();
 
-app.get('/xhealth', (req, res) => res.sendStatus(200));
-
 /* This will supply a single location for variables used server-wide. 
 The get_s3_bucket.js file could contain a function that retrieves a file
-from an AWS S3 Bucket, which requires a bucket name and a file name.
+from an AWS S3 Bucket, which requires the bucket name and a file name variables.
+Alternatively, you could pass the variable through as a parameter.
 */
 silo.init([
   [ 'bucketName', 'identity-level-of-education-dev-bucket-s3' ],

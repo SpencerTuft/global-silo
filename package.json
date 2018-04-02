@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SpencerTuft/silo.git"
+    "url": "git+https://github.com/SpencerTuft/global-silo.git"
   },
   "author": "stuft2",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/SpencerTuft/silo/issues"
+    "url": "https://github.com/SpencerTuft/global-silo/issues"
   },
-  "homepage": "https://github.com/SpencerTuft/silo#readme"
+  "homepage": "https://github.com/SpencerTuft/global-silo#readme"
 }

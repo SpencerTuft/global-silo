@@ -9,23 +9,26 @@ const isStr = (val) => typeof val === 'string';
 
 /**
  * Initializes multiple variables by calling the set method for each array element.
- * @param options is an array of arrays, each with two strings, e.g. [[key, value], [key2, value2]].
+ * @param options is an array of arrays, each with two strings, e.g. [[key, value], [key2, value2]]. It may also be an object.
  */
 const init = (options) => {
   if (Object.keys(global_store).length !== 0) throw new Error('The silo already has been initialized');
-  if (options && !Array.isArray(options)) throw new Error('The parameter must be an array');
-  options.forEach((option, index) => {
-    // option[0] is key
-    // option[1] is value
 
-    // Verifying the integrity of the configuration option structure
-    if (!Array.isArray(option)) throw new Error(`Element at index ${index} must be an array`);
-    if (option.length > 2) throw new Error(`Element at index ${index} has too many elements. Should contain 2 elements`);
-    if (option.length < 2) throw new Error(`Element at index ${index} has too few elements. Should contain 2 elements`);
-    if (!isStr(option[0])) throw new Error(`Element key at index ${index} must be a string.`);
-    // Save the key-value pair in the store
-    set(option[0], option[1]);
-  });
+  if (options && typeof options === 'object') Object.assign(global_store, options);
+  else if (options && !Array.isArray(options)) {
+    options.forEach((option, index) => {
+      // option[0] is key
+      // option[1] is value
+
+      // Verifying the integrity of the configuration option structure
+      if (!Array.isArray(option)) throw new Error(`Element at index ${index} must be an array`);
+      if (option.length < 2) throw new Error(`Element at index ${index} has too few elements. Should contain 2 elements`);
+      if (!isStr(option[0])) throw new Error(`Element key at index ${index} must be a string.`);
+      // Save the key-value pair in the store
+      set(option[0], option[1]);
+    });
+  }
+  else throw new Error(`The options passed in must either be an array or an object. Please check the specifications.`);
 };
 
 /**
